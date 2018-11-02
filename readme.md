@@ -63,5 +63,22 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
+---------------------------------------------------------------------
 Ovo su upustva za instalaciju verovatno sam nesto zaboravio
+
+1. Instalirati docker
+2. checkoutovati projekat
+3. Pozicioniraj se u folder lardock u projektu (tu se ranuje docker)
+4. Moras da imas slobodne portove 8080 i 3306 bez toga nece da radi docker
+5. Ranuje komandu sudo docker-compose up -d nginx mysql (Meni mora sa sudo, to skida nginx i mysql to ce potrajati)
+6. Ako je sve uredu napravljeni su kontejeri to se proverava sa komandom sudo docker ps
+7. Trbalo bi da je napravio kontejner sa sa nqnix i mysql.
+8. Postoje dve komadne kojim se ssh na kontejnere 
+  - sudo docker-compose exec workspace bash
+  - To se ssh na nqnix, i tu treba da instaliras node module, pa kucas npm install, verovatno ces dobiti gresku, posto treba    prvo python da se instalira verzija 2.7, drugo npm install treba da se uradi kao laradock user ima opcija da se stavi     komanda mislim --user laradock, tj flag se dodaje ne secam se tacno googlaj
+9. Zatim treba da se napravi baza mysql
+    to moze preko sqeule pro-a moras da stavis username root password root, kao host se navodi mysql
+10. Zatim uradis ponovo sudo docker-compose exec workspace bash jer treba da se napravi migraciona tabela u laravelu
+kad se uloguje tamo kucas artisan migrate::install, zatim pravi ostale tabele sam artisan migrate
+11. Treba uci u laravel-mix-src koji se nalazi u node modulu i podesiti host na 0.0.0.0
+12. I na kraju sudo docker-compose exec workspace bash i tu se ranuje npm run watch
