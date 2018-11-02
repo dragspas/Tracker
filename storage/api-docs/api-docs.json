@@ -1,0 +1,1809 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Estate API",
+        "description": "Estate swagger documented API",
+        "contact": {
+            "name": "NETLINK Beograd",
+            "url": "http://webprogramiranje.net/"
+        },
+        "version": "1.0.0"
+    },
+    "basePath": "/api",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/affiliates": {
+            "get": {
+                "tags": [
+                    "Affiliates"
+                ],
+                "summary": "Display a listing of the resource.",
+                "description": "No implementation notes.",
+                "operationId": "getAffiliates",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Affiliates"
+                ],
+                "summary": "Store a newly created resource in storage.",
+                "description": "No implementation notes.",
+                "operationId": "createAffiliate",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "postback_url",
+                        "in": "query",
+                        "description": "Post back URL to post confirmation of payable install to affiliate API",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "postback_success",
+                        "in": "query",
+                        "description": "Phrase to search affiliates API response to confirm successful post back",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "salutation",
+                        "in": "query",
+                        "description": "Represents 1=MR, 2=MRS, 3=MS",
+                        "required": false,
+                        "type": "integer",
+                        "enum": [
+                            "1",
+                            "2",
+                            "3"
+                        ]
+                    },
+                    {
+                        "name": "firstname",
+                        "in": "query",
+                        "description": "First name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "lastname",
+                        "in": "query",
+                        "description": "Last name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "address1",
+                        "in": "query",
+                        "description": "Address 1",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "address2",
+                        "in": "query",
+                        "description": "Address 2",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "city",
+                        "in": "query",
+                        "description": "City",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "state_id",
+                        "in": "query",
+                        "description": "State",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "province",
+                        "in": "query",
+                        "description": "Province",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "postal_code",
+                        "in": "query",
+                        "description": "Postal Code",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "description": "Relates to countryuid in countries table",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Contact email address. Also used for notification of hitting volume caps",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status of the affiliate, 0=inactive, 1=active",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "sub1_translate",
+                        "in": "query",
+                        "description": "Name to be used to post back sub1 value to affiliate network",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub2_translate",
+                        "in": "query",
+                        "description": "Name to be used to post back sub2 value to affiliate network",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub3_translate",
+                        "in": "query",
+                        "description": "Name to be used to post back sub3 value to affiliate network",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub4_translate",
+                        "in": "query",
+                        "description": "Name to be used to post back sub4 value to affiliate network",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub5_translate",
+                        "in": "query",
+                        "description": "Name to be used to post back sub5 value to affiliate network",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub6_translate",
+                        "in": "query",
+                        "description": "Name to be used to post back sub6 value to affiliate network",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "total_cap_email",
+                        "in": "query",
+                        "description": "0=Do not email when total volume cap reached. 1=email when total volume cap reached",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "daily_cap_email",
+                        "in": "query",
+                        "description": "0=Do not email when daily volume cap reached. 1=email when daily volume cap reached",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "dupe_pay",
+                        "in": "query",
+                        "description": "0=Do not pay affiliate network on duplicate end user. 1=Pay affiliate network on duplicate end user",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "comments",
+                        "in": "query",
+                        "description": "General account comments",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "internal_account",
+                        "in": "query",
+                        "description": "Internal account",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "total_cap_email_internal",
+                        "in": "query",
+                        "description": "0=Do not email when total volume cap reached. 1=email when total volume cap reached",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "daily_cap_email_internal",
+                        "in": "query",
+                        "description": "0=Do not email when daily volume cap reached. 1=email when daily volume cap reached",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid tag value"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/affiliates/{id}": {
+            "get": {
+                "tags": [
+                    "Affiliates"
+                ],
+                "summary": "Display resource for specified affiliate.",
+                "description": "No implementation notes.",
+                "operationId": "getAffiliate",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Unique record ID, to use as the affiliates unique identifier. Start first record at 12532",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Affiliates"
+                ],
+                "summary": "Update the specified resource in storage.",
+                "description": "No implementation notes.",
+                "operationId": "updateAffiliate",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Unique record ID, to use as the affiliates unique identifier. Start first record at 12532",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "postback_url",
+                        "in": "query",
+                        "description": "Post back URL to post confirmation of payable install to affiliate API",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "postback_success",
+                        "in": "query",
+                        "description": "Phrase to search affiliates API response to confirm successful post back",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "company",
+                        "in": "query",
+                        "description": "Company name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "salutation",
+                        "in": "query",
+                        "description": "Represents 1=MR, 2=MRS, 3=MS",
+                        "required": false,
+                        "type": "integer",
+                        "enum": [
+                            "1",
+                            "2",
+                            "3"
+                        ]
+                    },
+                    {
+                        "name": "firstname",
+                        "in": "query",
+                        "description": "First name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "lastname",
+                        "in": "query",
+                        "description": "Last name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "address1",
+                        "in": "query",
+                        "description": "Address 1",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "address2",
+                        "in": "query",
+                        "description": "Address 2",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "city",
+                        "in": "query",
+                        "description": "City",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "state_id",
+                        "in": "query",
+                        "description": "State",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "province",
+                        "in": "query",
+                        "description": "Province",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "postal_code",
+                        "in": "query",
+                        "description": "Postal Code",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "description": "Relates to countryuid in countries table",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Contact email address. Also used for notification of hitting volume caps",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status of the affiliate, 0=inactive, 1=active",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "sub1_translate",
+                        "in": "query",
+                        "description": "Name to be used to post back sub1 value to affiliate network",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub2_translate",
+                        "in": "query",
+                        "description": "Name to be used to post back sub2 value to affiliate network",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub3_translate",
+                        "in": "query",
+                        "description": "Name to be used to post back sub3 value to affiliate network",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub4_translate",
+                        "in": "query",
+                        "description": "Name to be used to post back sub4 value to affiliate network",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub5_translate",
+                        "in": "query",
+                        "description": "Name to be used to post back sub5 value to affiliate network",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub6_translate",
+                        "in": "query",
+                        "description": "Name to be used to post back sub6 value to affiliate network",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "total_cap_email",
+                        "in": "query",
+                        "description": "0=Do not email when total volume cap reached. 1=email when total volume cap reached",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "daily_cap_email",
+                        "in": "query",
+                        "description": "0=Do not email when daily volume cap reached. 1=email when daily volume cap reached",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "dupe_pay",
+                        "in": "query",
+                        "description": "0=Do not pay affiliate network on duplicate end user. 1=Pay affiliate network on duplicate end user",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "comments",
+                        "in": "query",
+                        "description": "General account comments",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "internal_account",
+                        "in": "query",
+                        "description": "Internal account",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "total_cap_email_internal",
+                        "in": "query",
+                        "description": "0=Do not email when total volume cap reached. 1=email when total volume cap reached",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "daily_cap_email_internal",
+                        "in": "query",
+                        "description": "0=Do not email when daily volume cap reached. 1=email when daily volume cap reached",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid tag value"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "405": {
+                        "description": "Method Not Allowed"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Affiliates"
+                ],
+                "summary": "Delete specified affiliate.",
+                "description": "No implementation notes.",
+                "operationId": "deleteAffiliate",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Unique record ID, to use as the affiliates unique identifier. Start first record at 12532",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "confirmDelete",
+                        "in": "query",
+                        "description": "You must type in >>delete<< to confirm deletion!",
+                        "required": true,
+                        "type": "string",
+                        "default": "delete"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "Authenticate"
+                ],
+                "summary": "Login",
+                "description": "No implementation notes",
+                "operationId": "createUsers",
+
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "password without hash",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Incorrect login parameters"
+                    },
+                    "500": {
+                        "description": "Internal Error occurred"
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "post": {
+                "tags": [
+                    "Authenticate"
+                ],
+                "summary": "Post Logout",
+                "description": "post Logout",
+                "operationId": "post",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "formData",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Incorrect login parameters"
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity"
+                    },
+                    "500": {
+                        "description": "Internal Error occurred"
+                    }
+                }
+            }
+        },
+        "/authenticatedUser": {
+            "post": {
+                "tags": [
+                    "Authenticate"
+                ],
+                "summary": "Post authenticated User",
+                "description": "Post authenticated User",
+                "operationId": "Post",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "formData",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],  
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Incorrect user"
+                    },
+                    "500": {
+                        "description": "Internal Error occurred"
+                    }
+                }
+            }
+        },
+        "/refreshToken": {
+            "post": {
+                "tags": [
+                    "Authenticate"
+                ],
+                "summary": "Refresh token",
+                "description": "post refresh Token",
+                "operationId": "postRefreshToken",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "formData",
+                        "description": "token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Unable to refresh token"
+                    },
+                    "500": {
+                        "description": "Internal Error occurred"
+                    }
+                }
+            }
+        },
+        "/campaigns": {
+            "get": {
+                "tags": [
+                    "Campaigns"
+                ],
+                "summary": "Display a listing of the resource.",
+                "description": "No implementation notes.",
+                "operationId": "getCampaigns",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Campaigns"
+                ],
+                "summary": "Store a newly created resource in storage.",
+                "description": "No implementation notes.",
+                "operationId": "createCampaign",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Descriptive title of campaign for internal use",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "affiliate_id",
+                        "in": "query",
+                        "description": "Affiliates UID related to the affiliateuid in affiliates table",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "redirect_link_id",
+                        "in": "query",
+                        "description": "Related to redirectlinkuid in redirectlinks table to enable redirects to appropriate marketplace",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "country",
+                        "in": "body",
+                        "description": "Active in country IDs (JSON)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "country": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "integer",
+                                        "default": 187
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "total_cap",
+                        "in": "query",
+                        "description": "Numeric quantity defining total volume cap, 9999999=unlimited",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "daily_cap",
+                        "in": "query",
+                        "description": "Numeric quantity defining daily volume cap, 9999999=unlimited",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "payment",
+                        "in": "query",
+                        "description": "Rate of pay-out to affiliate network",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "sub1_translate",
+                        "in": "query",
+                        "description": "Translation for sub1 name to affiliate network compatible name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub2_translate",
+                        "in": "query",
+                        "description": "Translation for sub2 name to affiliate network compatible name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub3_translate",
+                        "in": "query",
+                        "description": "Translation for sub3 name to affiliate network compatible name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub4_translate",
+                        "in": "query",
+                        "description": "Translation for sub4 name to affiliate network compatible name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub5_translate",
+                        "in": "query",
+                        "description": "Translation for sub5 name to affiliate network compatible name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub6_translate",
+                        "in": "query",
+                        "description": "Translation for sub6 name to affiliate network compatible name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "postback_url",
+                        "in": "query",
+                        "description": "Affiliate networks API post back URL to post confirmation of payable install",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "postback_success",
+                        "in": "query",
+                        "description": "Phrase to search for a successful post back response from affiliate API",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Flag for ability to switch offers on and off, 1=active, 0=inactive",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "total_cap_email",
+                        "in": "query",
+                        "description": "Flag to send email notification to affiliate network when total volume cap reached. 0=do not send, 1=send",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "total_cap_email_internal",
+                        "in": "query",
+                        "description": "Whether to send email internally within RM when total volume cap reached. 0=No, 1=Yes",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "daily_cap_email",
+                        "in": "query",
+                        "description": "Flag to send email notification to affiliate network when daily volume cap reached. 0=do not send, 1=send",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "daily_cap_email_internal",
+                        "in": "query",
+                        "description": "Whether to send email internally within RM when daily volume cap reached. 0=No, 1=Yes",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "dupe_pay",
+                        "in": "query",
+                        "description": "0=do not pay affiliate network on duplicate end user.1=pay affiliate network on duplicate end user.",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "install_counter",
+                        "in": "query",
+                        "description": "Counts payable delivered installs",
+                        "required": false,
+                        "type": "integer",
+                        "default": 0
+                    },
+                    {
+                        "name": "payout_type",
+                        "in": "query",
+                        "description": "Pay on install or full registration, 1=install, 2=full registration",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "1",
+                            "2"
+                        ]
+                    },
+                    {
+                        "name": "failover",
+                        "in": "query",
+                        "description": "Failover campaign, 0=false, 1=true",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid tag value"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+ 
+        "/campaigns/{id}": {
+            "get": {
+                "tags": [
+                    "Campaigns"
+                ],
+                "summary": "Display resource for specified campaign.",
+                "description": "No implementation notes.",
+                "operationId": "getCampaign",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Unique ID of the record (Start first record at 5326)",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Campaigns"
+                ],
+                "summary": "Update the specified resource in storage.",
+                "description": "No implementation notes.",
+                "operationId": "updateCampaign",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Unique ID of the record (Start first record at 5326)",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Descriptive title of campaign for internal use",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "affiliate_id",
+                        "in": "query",
+                        "description": "Affiliates UID related to the affiliateuid in affiliates table",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "redirect_link_id",
+                        "in": "query",
+                        "description": "Related to redirectlinkuid in redirectlinks table to enable redirects to appropriate marketplace",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "country",
+                        "in": "body",
+                        "description": "Active in country IDs (JSON)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "country": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "integer",
+                                        "default": 187
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "total_cap",
+                        "in": "query",
+                        "description": "Numeric quantity defining total volume cap, 9999999=unlimited",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "daily_cap",
+                        "in": "query",
+                        "description": "Numeric quantity defining daily volume cap, 9999999=unlimited",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "payment",
+                        "in": "query",
+                        "description": "Rate of pay-out to affiliate network",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "sub1_translate",
+                        "in": "query",
+                        "description": "Translation for sub1 name to affiliate network compatible name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub2_translate",
+                        "in": "query",
+                        "description": "Translation for sub2 name to affiliate network compatible name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub3_translate",
+                        "in": "query",
+                        "description": "Translation for sub3 name to affiliate network compatible name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub4_translate",
+                        "in": "query",
+                        "description": "Translation for sub4 name to affiliate network compatible name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub5_translate",
+                        "in": "query",
+                        "description": "Translation for sub5 name to affiliate network compatible name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sub6_translate",
+                        "in": "query",
+                        "description": "Translation for sub6 name to affiliate network compatible name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "postback_url",
+                        "in": "query",
+                        "description": "Affiliate networks API post back URL to post confirmation of payable install",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "postback_success",
+                        "in": "query",
+                        "description": "Phrase to search for a successful post back response from affiliate API",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Flag for ability to switch offers on and off, 1=active, 0=inactive",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "total_cap_email",
+                        "in": "query",
+                        "description": "Flag to send email notification to affiliate network when total volume cap reached. 0=do not send, 1=send",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "total_cap_email_internal",
+                        "in": "query",
+                        "description": "Whether to send email internally within RM when total volume cap reached. 0=No, 1=Yes",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "daily_cap_email",
+                        "in": "query",
+                        "description": "Flag to send email notification to affiliate network when daily volume cap reached. 0=do not send, 1=send",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "daily_cap_email_internal",
+                        "in": "query",
+                        "description": "Whether to send email internally within RM when daily volume cap reached. 0=No, 1=Yes",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "dupe_pay",
+                        "in": "query",
+                        "description": "0=do not pay affiliate network on duplicate end user.1=pay affiliate network on duplicate end user.",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    },
+                    {
+                        "name": "install_counter",
+                        "in": "query",
+                        "description": "Counts payable delivered installs",
+                        "required": false,
+                        "type": "integer",
+                        "default": 0
+                    },
+                    {
+                        "name": "payout_type",
+                        "in": "query",
+                        "description": "Pay on install or full registration, 1=install, 2=full registration",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "1",
+                            "2"
+                        ]
+                    },
+                    {
+                        "name": "failover",
+                        "in": "query",
+                        "description": "Failover campaign, 0=false, 1=true",
+                        "required": true,
+                        "type": "integer",
+                        "enum": [
+                            "0",
+                            "1"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid tag value"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Campaigns"
+                ],
+                "summary": "Delete specified campaign.",
+                "description": "No implementation notes.",
+                "operationId": "deleteCampaign",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Unique ID of the record (Start first record at 5326)",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "confirmDelete",
+                        "in": "query",
+                        "description": "You must type in >>delete<< to confirm deletion!",
+                        "required": true,
+                        "type": "string",
+                        "default": "delete"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "405": {
+                        "description": "Method Not Allowed"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+  
+        "/roles/{id}": {
+            "get": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Get one Role",
+                "description": "No implementation notes",
+                "operationId": "getOneRole",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid role"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Update Role",
+                "description": "No implementation notes",
+                "operationId": "updateRole",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "name",
+                        "in": "formData",
+                        "description": "name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "display_name",
+                        "in": "formData",
+                        "description": "Name for end user",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "in": "formData",
+                        "description": "Description of the role",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid role"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Delete Role",
+                "description": "No implementation notes",
+                "operationId": "deleteRole",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "confirmDelete",
+                        "in": "query",
+                        "description": "confirmation delete",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid role"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get all Users",
+                "description": "No implementation notes",
+                "operationId": "allUsers",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create User",
+                "description": "No implementation notes",
+                "operationId": "createUsers",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "first_name",
+                        "in": "query",
+                        "description": "firstName",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "query",
+                        "description": "lastName",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password2",
+                        "in": "query",
+                        "description": "password2",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "roles",
+                        "in": "body",
+                        "description": "User roles",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "roles": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get user",
+                "description": "No implementation notes",
+                "operationId": "allUsers",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "username",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Update User",
+                "description": "No implementation notes",
+                "operationId": "createUsers",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "username",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "email",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "roles",
+                        "in": "body",
+                        "description": "User roles",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "roles": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid tag value"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Delete User",
+                "description": "No implementation notes",
+                "operationId": "createUsers",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "confirmDelete",
+                        "in": "query",
+                        "description": "confirmation delete",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Error": {
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
